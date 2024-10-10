@@ -42,64 +42,13 @@ FORM showdata.
 
   CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
     EXPORTING
-*     i_interface_check                 = ' '
-*     i_bypassing_buffer                = ' '
-*     i_buffer_active                   = ' '
      i_callback_program                = sy-repid
-*     i_callback_pf_status_set          = ' '
-*     i_callback_user_command           = ' '
      i_callback_top_of_page            = 'F_TOP_OF_PAGE'
-*     i_callback_html_top_of_page       = 'F_TOP_OF_PAGE'
-*     i_callback_html_end_of_list       = ' '
-*     i_structure_name                  =
-*     i_background_id                   = ' '
-*     i_grid_title                      =
-*     i_grid_settings                   =
-*     is_layout                         =
      it_fieldcat                       = it_empalv
-*     it_excluding                      =
-*     it_special_groups                 =
      it_sort                           = it_sortalv
-*     it_filter                         =
-*     is_sel_hide                       =
-*     i_default                         = 'X'
-*     i_save                            = ' '
-*     is_variant                        =
-*     it_events                         =
-*     it_event_exit                     =
-*     is_print                          =
-*     is_reprep_id                      =
-*     i_screen_start_column             = 0
-*     i_screen_start_line               = 0
-*     i_screen_end_column               = 0
-*     i_screen_end_line                 = 0
-*     i_html_height_top                 = 0
-*     i_html_height_end                 = 0
-*     it_alv_graphics                   =
-*     it_hyperlink                      =
-*     it_add_fieldcat                   =
-*     it_except_qinfo                   =
-*     ir_salv_fullscreen_adapter        =
-*     o_previous_sral_handler           =
-*   IMPORTING
-*     e_exit_caused_by_caller           =
-*     es_exit_caused_by_user            =
     TABLES
       t_outtab                          = it_employee
-   EXCEPTIONS
-     program_error                     = 1
-     OTHERS                            = 2
             .
-  IF sy-subrc <> 0.
-* Implement suitable error handling here
-  ENDIF.
-**  CALL FUNCTION 'REUSE_ALV_GRID_DISPLAY'
-**    EXPORTING
-**      it_fieldcat        = it_empalv
-**      i_callback_program = sy-repid
-**      it_sort            = it_sortalv
-**    TABLES
-**      t_outtab           = it_employee.
 
 ENDFORM.
 
