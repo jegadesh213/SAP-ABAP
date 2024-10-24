@@ -1,0 +1,5 @@
+1	ALEX                          	1	1000.00	USD  	20240116	DEVELOPER
+2	JANE                          	1	1000.00	USD  	20231102	HR
+3	MIKE                          	1	800.00	USD  	20211027	TESTER
+4	JIMMY                         	1	400.00	USD  	20230103	HR
+5	ADAM                          	2	500.00	USD  	20230116	TESTER
