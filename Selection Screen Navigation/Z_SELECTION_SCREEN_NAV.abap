@@ -10,8 +10,7 @@ TABLES : zzempprac.
 DATA : it_employee TYPE TABLE OF zzempprac,
        wa_employee TYPE zzempprac.
 
-DATA : custom TYPE REF TO cl_gui_custom_container,
-       grid   TYPE REF TO cl_gui_alv_grid.
+DATA :  f1 TYPE char29.
 
 SELECTION-SCREEN BEGIN OF BLOCK b1 WITH FRAME TITLE TEXT-001.
 
@@ -88,7 +87,26 @@ ENDFORM.
 *& <--  p2        text
 *&---------------------------------------------------------------------*
 FORM display_data2 .
-  SELECT * FROM zzempprac INTO CORRESPONDING FIELDS OF TABLE it_employee.
+
+  SELECT * FROM zzempprac INTO CORRESPONDING FIELDS OF TABLE it_employee WHERE emplnum = f1.
   SORT it_employee BY emplnum.
-  cl_demo_output=>display( it_employee ) .
+
+  " Check if data is available
+  IF it_employee IS INITIAL.
+    WRITE: / 'No data found for Employee Number:', f1.
+    RETURN.
+  ENDIF.
+
+  LEAVE TO LIST-PROCESSING AND RETURN TO SCREEN 0100.
+
+  " Display output directly using list processing
+  WRITE : 'Employee Number', 20 'Employee Name', 40 'Department', 65 'Salary', 90 'Units'.
+  ULINE.
+
+  LOOP AT it_employee INTO wa_employee.
+    WRITE : / wa_employee-emplnum, 20 wa_employee-emplname, 40 wa_employee-empdept,
+              65 wa_employee-empsalary LEFT-JUSTIFIED, 90 wa_employee-units.
+  ENDLOOP.
+  ULINE.
+
 ENDFORM.
